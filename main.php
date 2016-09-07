@@ -34,7 +34,6 @@ class InlineCSSParser {
 				$css .= $this->indentCSS($value);
 				$css .= "}\n\n";
 				$externalCSS .= $css;
-
 				$elem->removeAttribute("style");
 			}
 		}	
@@ -62,12 +61,12 @@ class InlineCSSParser {
 			else {
 				$sib = $elem;
 				$nth = 1;
-            	while ($sib = $sib->previousSibling) { 
-            		if ($sib->nodeName == $name)$nth++;
-            	}
+		            	while ($sib = $sib->previousSibling) { 
+            				if ($sib->nodeName == $name) $nth++;
+            			}
             	
-            	if ($nth != 1)
- 		          	$path[] = $name . ":nth-child(" . $nth . ")";
+		            	if ($nth != 1)
+ 			          	$path[] = $name . ":nth-child(" . $nth . ")";
 				else 
 					$path[] = $name;
 			}
@@ -95,10 +94,8 @@ class InlineCSSParser {
 }
 
 $parse = new InlineCSSParser();
-
-$parse->loadFile("sample\\sample1.html");
-
-$parse->getCSSInFile("output\\sample1.css");
-$parse->getHTMLInFile("output\\sample1.html");
+$parse->loadFile("sample\\sample1.html");      // Sample file
+$parse->getCSSInFile("output\\sample1.css");   // All inline styles 
+$parse->getHTMLInFile("output\\sample1.html"); // HTML without inline styles
 
 ?>
